@@ -25,7 +25,7 @@ public class Operator{
     static {
         messageBrokerUrl = Constant.configuration.getURL();////ActiveMQConnection.DEFAULT_BROKER_URL;//"tcp://localhost:61616";
         //messageBrokerUrl ="tcp://localhost:61616";
-       // messageBrokerUrl ="tcp://104.131.100.20:61616";
+        //messageBrokerUrl ="tcp://104.131.180.20:61616";
         ackMode = Session.AUTO_ACKNOWLEDGE;
 
     }
@@ -34,7 +34,7 @@ public class Operator{
     public Operator(String subscriptionName, String topicName) throws JMSException {
         this.subscriptionName = subscriptionName;
         this.topicName = topicName;
-    //    this.create();
+        //    this.create();
 
     }
 
@@ -64,7 +64,7 @@ public class Operator{
             isConnected =true;
         }
         catch (JMSException e){
-         //   e.printStackTrace();
+            //   e.printStackTrace();
             if(e instanceof InvalidClientIDException)
                 isAnswered = true;
             isConnected = false;
@@ -122,9 +122,9 @@ public class Operator{
         try{
             connection.close();
         }
-         catch (JMSException e){
-             e.printStackTrace();
-         }
+        catch (JMSException e){
+            e.printStackTrace();
+        }
     }
 
     public Destination getDestination() {

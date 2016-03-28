@@ -24,13 +24,15 @@ public class UserItem extends GridPane implements   Runnable, EventHandler<Mouse
 
 
     private ImageView userImage;
-    //private ImageView statusImage; // ==========
+    private ImageView statusImage; // =========
     private volatile Label thumbUserName;
+    private volatile Label thumbUserIcon;
     private Rectangle statusBar;
     private Button closeButton;
     private Image thumbImage;
     private Image statusOnline; // =========
     private Image statusOffline; // =========
+    private Image statusIcon;
     private User user;
     private ChatController chatController;
     private static UserItem userItem;  //addded latest
@@ -46,7 +48,7 @@ public class UserItem extends GridPane implements   Runnable, EventHandler<Mouse
 
         this.setHgap(8);
         this.setStyle("-fx-background-color:transparent; -fx-border-color:transparent;");
-                   //
+        //
 
         // ========================================
         /*statusOnline = new Image(getClass().getResourceAsStream("statusOnline.png"));
@@ -62,6 +64,8 @@ public class UserItem extends GridPane implements   Runnable, EventHandler<Mouse
         thumbImage = new Image(getClass().getResourceAsStream("dummyImage.png"));
         statusOnline = new Image(getClass().getResourceAsStream("userPicOnline.png"));
         statusOffline = new Image(getClass().getResourceAsStream("userPicOffline.png"));
+        statusIcon = new Image(getClass().getResourceAsStream("userOnlineIcon.png"));
+
 
         userImage = new ImageView();
         userImage.setFitHeight(30);
@@ -73,13 +77,22 @@ public class UserItem extends GridPane implements   Runnable, EventHandler<Mouse
 
         thumbUserName = new Label();
         thumbUserName.setText(user.getUserName());
-        thumbUserName.setStyle("-fx-text-fill:#696969; -fx-font-size:12px; -fx-font-weight:bold;");
+        thumbUserName.setStyle("-fx-text-fill:#ffffff; -fx-font-size:12px; -fx-font-weight:bold;");
         //thumbUserName.setStyle("-fx-text-color:#fff; -fx-font-size:11px");
         //thumbUserName.setPrefSize(119, 20); //119,20
         thumbUserName.setFont(Font.font(null, FontWeight.BOLD, 14));
-        thumbUserName.setMaxWidth(130);
-        thumbUserName.setPrefWidth(130);
+        thumbUserName.setMaxWidth(125);
+        thumbUserName.setPrefWidth(125);
         GridPane.setHalignment(thumbUserName, HPos.CENTER );
+
+        // thumbUserIcon =new Label();
+        statusImage = new ImageView();
+        statusImage.setFitHeight(6);
+        statusImage.setFitWidth(6);
+        statusImage.setImage(statusIcon);
+        statusImage.setStyle("-fx-padding:2px;-fx-border-radius:30px; -fx-background-radius:30px;");
+        // GridPane.setHalignment(statusImage, HPos.LEFT );
+
 
 
 //        ImageView  close = new ImageView(new Image(getClass().getResourceAsStream("close.png")));
@@ -105,6 +118,7 @@ public class UserItem extends GridPane implements   Runnable, EventHandler<Mouse
 
         this.addRow(0,userImage);
         this.addRow(0,thumbUserName);
+        this.addRow(0,statusImage);
         this.addRow(0,closeLabel);
 
         this.disableProperty().addListener(new ChangeListener<Boolean>() {
@@ -125,7 +139,7 @@ public class UserItem extends GridPane implements   Runnable, EventHandler<Mouse
             //           stop();
             // blink = null;
             //         System.out.println("stopping");
-            Platform.runLater(() -> this.thumbUserName.setStyle("-fx-text-fill:#696969; -fx-font-size:12px; -fx-font-weight:bold; "));
+            Platform.runLater(() -> this.thumbUserName.setStyle("-fx-text-fill:#ffffff; -fx-font-size:12px; -fx-font-weight:bold; "));
 
 
             //blink = new Blink();
@@ -140,16 +154,29 @@ public class UserItem extends GridPane implements   Runnable, EventHandler<Mouse
         try{
             if(isDisabled){
                 userImage.setImage(statusOffline);
+                statusImage.setImage(null);
 
             }else{
                 userImage.setImage(statusOnline);
+                statusImage.setImage(statusIcon);
+
             }
         }
         catch (Exception e){
 
         }
     }
+    /*
+        public void changeStatus(boolean isDisabled) {
+            if(isDisabled){
+             //   statusImage.
+            }else{
+                statusImage.setImage(statusIcon);
 
+
+            }
+        }
+    */
     public void startBlink(){
         blink = new Thread(this, user.getUserName());
         blink.start ();
@@ -163,56 +190,56 @@ public class UserItem extends GridPane implements   Runnable, EventHandler<Mouse
             return;
 
         try{
-                try{
-                    for (int i = 0; i < 3; i++) {
-                        if(thumbUserName==null)
-                                break;
+            try{
+                for (int i = 0; i < 3; i++) {
+                    if(thumbUserName==null)
+                        break;
 
-                        try {
-                            this.thumbUserName.setStyle("-fx-text-fill:#ffa500; -fx-font-size:12px; -fx-font-weight:bold;");
-                        }
-                        catch (NullPointerException e){
-                            break;
-                        }
-                         catch (Exception e){
-                             break;
-                        }
-
-                        try {
-                            blink.sleep(250);
-                        } catch (InterruptedException e) {
-
-                        }
-                        catch(Exception e){
-
-                        }
-
-
-                        try {
-                            this.thumbUserName.setStyle("-fx-text-fill: #1e90ff; -fx-font-size:12px; -fx-font-weight:bold;");
-                        }
-                        catch (NullPointerException e){
-                            break;
-                        }
-                        catch (Exception e){
-                            break;
-                        }
-
-                        try {
-                            blink.sleep(250);
-                        } catch (InterruptedException e) {
-                            ///  e.printStackTrace();
-
-                        }
-                        catch(Exception e){
-
-                        }
-                        //    System.out.println("Loop: " + running);
+                    try {
+                        this.thumbUserName.setStyle("-fx-text-fill:#ffa500; -fx-font-size:12px; -fx-font-weight:bold;");
                     }
+                    catch (NullPointerException e){
+                        break;
+                    }
+                    catch (Exception e){
+                        break;
+                    }
+
+                    try {
+                        blink.sleep(250);
+                    } catch (InterruptedException e) {
+
+                    }
+                    catch(Exception e){
+
+                    }
+
+
+                    try {
+                        this.thumbUserName.setStyle("-fx-text-fill: #1e90ff; -fx-font-size:12px; -fx-font-weight:bold;");
+                    }
+                    catch (NullPointerException e){
+                        break;
+                    }
+                    catch (Exception e){
+                        break;
+                    }
+
+                    try {
+                        blink.sleep(250);
+                    } catch (InterruptedException e) {
+                        ///  e.printStackTrace();
+
+                    }
+                    catch(Exception e){
+
+                    }
+                    //    System.out.println("Loop: " + running);
                 }
-                catch (Exception e){
-                    e.printStackTrace();
-                }
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
             blink = null;
 
             /*****Change text Color*/
@@ -326,7 +353,7 @@ public class UserItem extends GridPane implements   Runnable, EventHandler<Mouse
     public void handle(MouseEvent event) {
 
 
-    //    chatController.setUsername(userItem);
+        //    chatController.setUsername(userItem);
         Platform.runLater(() -> {
             try {
                 final UserItem userItem = this;

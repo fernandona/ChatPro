@@ -24,41 +24,46 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <SplitPane prefHeight="634.0" prefWidth="650.0" style="-fx-background-color: transparent;" GridPane.rowIndex="1">
+      <SplitPane prefHeight="634.0" prefWidth="650.0" style="-fx-background-color: #595044;" GridPane.rowIndex="1">
          <items>
-            <AnchorPane prefHeight="601.0" prefWidth="648.0" style="-fx-background-color: white; -fx-border-color: white;">
+            <AnchorPane prefHeight="634.0" prefWidth="650.0" style="-fx-background-color: #595044; -fx-border-color: #595044;">
                <children>
-                  <ScrollPane fx:id="messageDisplay" layoutX="214.0" layoutY="58.0" maxHeight="413.0" maxWidth="431.0" minHeight="413.0" minWidth="431.0" prefHeight="413.0" prefWidth="431.0" style="-fx-background: white;" />
-                  <Label fx:id="Username" layoutX="217.0" layoutY="7.0" prefHeight="44.0" prefWidth="327.0" style="-fx-text-fill: #2c3e50;" textOverrun="CLIP">
+                  <ImageView fitHeight="609.0" fitWidth="650.0">
+                     <image>
+                        <Image url="@img/Chat%20Operator%20Background.png" />
+                     </image>
+                  </ImageView>
+                  <ScrollPane fx:id="messageDisplay" layoutX="214.0" layoutY="58.0" maxHeight="413.0" maxWidth="431.0" minHeight="413.0" minWidth="431.0" prefHeight="413.0" prefWidth="431.0" style="-fx-background: transparent; -fx-border-color: transparent;" />
+                  <Label fx:id="Username" layoutX="217.0" layoutY="7.0" prefHeight="44.0" prefWidth="327.0" style="-fx-text-fill: white;" textFill="WHITE" textOverrun="CLIP">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font></Label>
-                  <TextArea id="messageTextField" fx:id="messageTextField" layoutX="215.0" layoutY="474.0" maxHeight="121.0" maxWidth="430.0" minHeight="80.0" minWidth="249.0" onKeyPressed="#doSendMessage" prefHeight="80.0" prefWidth="430.0" promptText="Type Message here....." wrapText="true">
+                  <TextArea id="messageTextField" fx:id="messageTextField" layoutX="215.0" layoutY="474.0" maxHeight="121.0" maxWidth="430.0" minHeight="80.0" minWidth="249.0" onKeyPressed="#doSendMessage" opacity="0.25" prefHeight="95.0" prefWidth="430.0" promptText="Type Message here....." wrapText="true">
                      <contextMenu>
                         <ContextMenu fx:id="variablesMenu" onAction="#setSelectedItem" style="-fx-background-color: rgb(255.0, 255.0, 255.0, 0.95); fx-background-radius: 2.0;" />
                      </contextMenu></TextArea>
-                  <Line endX="330.0" layoutX="315.0" layoutY="56.0" startX="-100.0" stroke="#2a3137">
+                  <Line endX="330.0" layoutX="315.0" layoutY="56.0" startX="-100.0" stroke="#fcfcfc" strokeWidth="0.75">
                      <rotationAxis>
                         <Point3D />
                      </rotationAxis></Line>
-                  <Line endX="508.0" layoutX="11.0" layoutY="301.0" rotate="90.0" startX="-106.0" stroke="#2a3137" />
-                  <Button fx:id="sendButton" layoutX="575.0" layoutY="567.0" mnemonicParsing="false" onAction="#getMyMessage" prefHeight="32.0" prefWidth="63.0" style="-fx-background-color: #00AFF0; -fx-font-weight: bold; -fx-text-fill: white;" text="Send">
+                  <Line endX="508.0" layoutX="11.0" layoutY="301.0" rotate="90.0" startX="-106.0" stroke="WHITE" strokeWidth="0.75" />
+                  <Button fx:id="sendButton" layoutX="588.0" layoutY="578.0" mnemonicParsing="false" onAction="#getMyMessage" opacity="0.52" prefHeight="17.0" prefWidth="57.0" style="-fx-background-color: #332E27; -fx-font-weight: bold; -fx-text-fill: white;" text="Send">
 
                   </Button>
-                  <ImageView fx:id="settings" fitHeight="20.0" fitWidth="20.0" layoutX="186.0" layoutY="586.0" onMouseClicked="#showSettings" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="settings" fitHeight="20.0" fitWidth="20.0" layoutX="185.0" layoutY="582.0" onMouseClicked="#showSettings" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Model/gearmain.png" />
                      </image>
                   </ImageView>
-                  <CheckBox fx:id="doTrain" layoutX="218.0" layoutY="573.0" mnemonicParsing="false" selected="true" style="-fx-background-color: transparent;" text="Train the Bot" />
-                  <ListView fx:id="chatUsersList" maxHeight="609.0" maxWidth="210" minHeight="538.0" minWidth="210.0" onMouseClicked="#setUsername" prefHeight="581.0" prefWidth="210" style="-fx-border-color: white; -fx-border-width: 0 0 0 0;" />
+                  <CheckBox fx:id="doTrain" layoutX="220.0" layoutY="584.0" mnemonicParsing="false" selected="true" style="-fx-background-color: transparent;" text="Train the Bot" textFill="WHITE" />
+                  <ListView fx:id="chatUsersList" maxHeight="609.0" maxWidth="210" minHeight="538.0" minWidth="210.0" onMouseClicked="#setUsername" opacity="0.62" prefHeight="569.0" prefWidth="210" style="-fx-border-color: transparent; -fx-border-width: 0 0 0 0;" />
                </children>
             </AnchorPane>
          </items>
       </SplitPane>
-      <Pane fx:id="titleBar" onMouseDragged="#moveApp" onMousePressed="#moveApp" prefHeight="42.0" prefWidth="650.0" style="-fx-background-color: #00AFF0;">
+      <Pane fx:id="titleBar" onMouseDragged="#moveApp" onMousePressed="#moveApp" prefHeight="42.0" prefWidth="650.0" style="-fx-background-color: #665C4D;">
          <children>
-            <Label layoutX="30.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 12px;" text="vAssist" />
+            <Label layoutX="30.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 12px;" text="TUS Support" />
             <Label fx:id="statusIcon" layoutX="6.0" layoutY="5.0" maxHeight="17.0" maxWidth="17.0" minHeight="17.0" minWidth="17.0" prefHeight="17.0" prefWidth="17.0">
                <graphic>
                   <ImageView fx:id="statusImageView" fitHeight="17.0" fitWidth="17.0">

@@ -10,7 +10,7 @@ import java.io.*;
 /**
  * Created by mmursith on 12/9/2015.
  */
- public class  ConfigurationController {
+public class  ConfigurationController {
     private static Configuration configuration = null;
 
 //    public static void main(String[] args) {
@@ -21,8 +21,8 @@ import java.io.*;
 //
 //
 
-
-    static  String filePath = "C:\\vAssistant\\configuration\\";
+    static String prefix = IdentifyPlatformController.getPlatformPath();
+    static  String filePath = prefix+"configuration\\";
     static String fileName = filePath+"config.json";
     public static void writeConfig(Configuration configuration){
         JSONObject obj = new JSONObject();
@@ -49,12 +49,12 @@ import java.io.*;
             file.close();
 
         } catch (IOException e) {
-    //        e.printStackTrace();
+            //        e.printStackTrace();
         }
         catch (Exception e){
             e.printStackTrace();
         }
-    //    System.out.println(obj);
+        //    System.out.println(obj);
     }
 
 
@@ -65,7 +65,7 @@ import java.io.*;
         try {
 
 
-                        //FileReader fileReader = new FileReader(bufferedReader);
+            //FileReader fileReader = new FileReader(bufferedReader);
             Object obj = parser.parse(new FileReader(fileName));
 
             configuration = new Configuration();
@@ -78,7 +78,7 @@ import java.io.*;
             String destination = (String) jsonObject.get("destination");
             String URL = (String) jsonObject.get("URL");
 
-          //  System.out.println(jsonObject);
+            //  System.out.println(jsonObject);
 
             configuration.setOperator(operator);
             configuration.setDestination(destination);
@@ -99,7 +99,7 @@ import java.io.*;
 
         } catch (IOException | ParseException e) {
             setConfiguration();
-        //    e.printStackTrace();
+            //    e.printStackTrace();
         }
         catch (Exception e){
             e.printStackTrace();
@@ -113,7 +113,7 @@ import java.io.*;
         configuration.setDestination("chat.Operator");
         configuration.setSubscription("Operator");
         configuration.setTopic("chat.*");
-        configuration.setURL("tcp://cmterainsight:61616?trace=false&soTimeout=60000");
+        configuration.setURL("tcp://104.131.180.20:61616?trace=false&soTimeout=60000");
         new File(filePath).mkdir();
         writeConfig(configuration);
     }

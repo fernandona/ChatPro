@@ -98,7 +98,7 @@ public class NotificationController {
             popup.setX(stage.getX()+10);
             popup.setY(stage.getY()+5);
             //stage.getScene().setFill(Color.valueOf("#f4f4f4"));
-            stage.getScene().setFill(Color.valueOf("#0B3861"));
+            stage.getScene().setFill(Color.valueOf("#595044"));
             PauseTransition delay = new PauseTransition(Duration.seconds(5));
             //PauseTransition delay1 = new PauseTransition(Duration.seconds(2));
             delay.setOnFinished( event -> stage.close() );
@@ -112,7 +112,7 @@ public class NotificationController {
             //cnt--;
             ///       System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
             //////////////////
-        //    System.out.println(mouseEvent.getSource());
+            //    System.out.println(mouseEvent.getSource());
             notifyLocations();
             stage.close();
         });
@@ -182,12 +182,12 @@ public class NotificationController {
         NotificationController.index = index;
         PlatformImpl.setTaskbarApplication(false);
         stage.close();
-     //   stage.setTitle("Notification");
-     //   stage.initStyle(StageStyle.UTILITY);
+        //   stage.setTitle("Notification");
+        //   stage.initStyle(StageStyle.UTILITY);
 
         StackPane root = new StackPane();
-        root.setStyle("-fx-background-color: TRANSPARENT; -fx-border-color: #0B3861");
-        Scene scene = new Scene(root, 300, 80, Color.valueOf("#0B3861"));
+        root.setStyle("-fx-background-color: TRANSPARENT; -fx-border-color: #595044");
+        Scene scene = new Scene(root, 300, 80, Color.valueOf("#595044"));
         stage.setScene(scene);
 
         //stage.initOwner(stageINIT);

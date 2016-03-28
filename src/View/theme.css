@@ -96,6 +96,7 @@
 .text-area {
     -fx-background-color: transparent;
     -fx-text-color:#000;
+   // -fx-text-inner-color: black;
     -fx-background-insets:  0.0;
     -fx-background-radius: 2.0;
     -fx-padding: 0; /*.7em;*/
@@ -168,6 +169,7 @@ scrollbar
 .scroll-bar:vertical .thumb {
     -fx-background-color:derive(black,80%);
 	-fx-padding:1.5;
+
 	-fx-border-color:white;
 	-fx-border-width:0px;
 
@@ -223,7 +225,7 @@ scrollbar
 */
 
 .list-view{
-    -fx-background-color:white;
+    -fx-background-color:transparent;
     -fx-border-color:white;
     -fx-focus-color: white;
     -fx-border-width:0 0 0 0 ;
@@ -237,7 +239,7 @@ scrollbar
  -fx-background-color:#00aff0;
 }
 .list-cell{
-    -fx-background-color:white;
+    -fx-background-color:derive(gray,20%);
     -fx-border-color:white;
     -fx-border-width:0 0 0 0;
 
@@ -246,7 +248,7 @@ scrollbar
 
 
 .list-cell:filled:selected {
-    -fx-background-color: #EEE9E9 ;//========#D6D6D6
+    -fx-background-color: transparent; //EEE9E9 ;//========#D6D6D6
     -fx-text-fill: white;
 
     -fx-font-size:12px;
@@ -279,14 +281,14 @@ scrollbar
 }
 */
 .list-cell:filled:hover {
-    -fx-background-color: #BFE9F9; //=======#A1A1A1=============================
+    -fx-background-color:#bda88c;    //#BFE9F9; //=======#A1A1A1=============================
     -fx-text-fill: white;
 
 
 }
 
  .list-cell:filled:selected:hover{
-     -fx-background-color: #BFE9F9; // ===========================================
+     -fx-background-color: #bda88c;   //BFE9F9; // ===========================================
      -fx-text-fill: white;
 
  }
@@ -345,7 +347,7 @@ For the "Train the Bot" check box
 */
 .check-box .box {
     -fx-background-color: transparent;
-    -fx-border-color: #2a3137;
+    -fx-border-color: #9E9E9E;
     -fx-border-width: 1.5px;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
     -fx-background-radius: 2, 2, 1, 1;
@@ -353,5 +355,5 @@ For the "Train the Bot" check box
 }
 
 .check-box:selected .mark{
-    -fx-background-color: #2a3137;
+    -fx-background-color: #9E9E9E;
 }

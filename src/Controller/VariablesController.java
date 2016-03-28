@@ -15,12 +15,14 @@ import java.util.ArrayList;
 
 public class  VariablesController {
 
-    static  String filePath = "C:\\vAssistant\\configuration\\";
+    static String prefix = IdentifyPlatformController.getPlatformPath();
+    static  String filePath = prefix +"\\configuration  ";
+    //static  String filePath = "C:\\vAssistant\\configuration\\";
     static String fileName = filePath+"variables.json";
     private static ArrayList<Variable> variableList;
     public static void main(String[] args) {
 
-  //      writeVariables();
+        //      writeVariables();
 //        System.out.println(configurationController.readConfig().toString());
         readVariables();
 
@@ -43,10 +45,10 @@ public class  VariablesController {
 
 
         for (Variable variable:variableList) {
-                JSONObject obj = new JSONObject();
-                obj.put("ID", variable.getID());
-                obj.put("name", variable.getName());
-                list.add(obj);
+            JSONObject obj = new JSONObject();
+            obj.put("ID", variable.getID());
+            obj.put("name", variable.getName());
+            list.add(obj);
         }
 
 
@@ -66,7 +68,7 @@ public class  VariablesController {
         catch (Exception e){
             e.printStackTrace();
         }
-  //      System.out.println(object);
+        //      System.out.println(object);
     }
 
 
@@ -75,7 +77,7 @@ public class  VariablesController {
         variableList = new ArrayList<>();
 
         try {
- //           Scanner scanner = new Scanner(new File("variables.json"));
+            //           Scanner scanner = new Scanner(new File("variables.json"));
 //
             //File file1 = new File(VariablesController.class.getResource("variables.json").getFile());
             JSONObject jsonObject = (JSONObject) (new JSONParser().parse(new FileReader(fileName)));
@@ -83,22 +85,22 @@ public class  VariablesController {
             JSONArray msg = (JSONArray) jsonObject.get("variables");
 
 
-           for (int i=0; i<msg.size(); i++){
-               JSONObject obj = (JSONObject) msg.get(i);
-               variableList.add(new Variable((String) obj.get("ID"), (String) obj.get("name")));
- //              System.out.println(obj.get("ID")+"      "+obj.get("name"));
+            for (int i=0; i<msg.size(); i++){
+                JSONObject obj = (JSONObject) msg.get(i);
+                variableList.add(new Variable((String) obj.get("ID"), (String) obj.get("name")));
+                //              System.out.println(obj.get("ID")+"      "+obj.get("name"));
 
             }
 
         } catch (FileNotFoundException | ParseException e) {
             setVariable();
-         //   e.printStackTrace();
+            //   e.printStackTrace();
         } catch (Exception e){
             e.printStackTrace();
         }
 
 
-      return variableList;
+        return variableList;
     }
 
     private static void setVariable() {

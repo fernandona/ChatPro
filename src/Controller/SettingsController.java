@@ -82,9 +82,9 @@ public class SettingsController  implements ChangeListener, EventHandler<KeyEven
 
 
     public void showSettingsWindow(Stage parentStage) throws Exception {
-      //  controller.getStage().toBack();
+        //  controller.getStage().toBack();
         //System.out.println(settingsStage);
-       // setting.start(settingsStage);
+        // setting.start(settingsStage);
 
 //  System.out.println(settingsStage);
         settingsStage.show();
@@ -103,7 +103,7 @@ public class SettingsController  implements ChangeListener, EventHandler<KeyEven
 
     private void fillVariable() {
         ArrayList<Variable> contextMenuVariables = (ArrayList<Variable>) VariablesController.readVariables();
-         data =FXCollections.observableArrayList(contextMenuVariables);
+        data =FXCollections.observableArrayList(contextMenuVariables);
 //
 //        for (Variable variable :contextMenuVariables) {
 //           data.add(variable);
@@ -259,7 +259,7 @@ public class SettingsController  implements ChangeListener, EventHandler<KeyEven
         Variable variable = tableVariables.getSelectionModel().getSelectedItem();
         data.remove(variable);
         //if(removeVariableButton.isDisabled())
-            applyVariableButton.setDisable(false);
+        applyVariableButton.setDisable(false);
     }
 
 
@@ -286,7 +286,7 @@ public class SettingsController  implements ChangeListener, EventHandler<KeyEven
 
     @Override
     public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-          applyConfigurationButton.setDisable(false);
+        applyConfigurationButton.setDisable(false);
     }
 
     @Override
@@ -300,11 +300,11 @@ public class SettingsController  implements ChangeListener, EventHandler<KeyEven
         topicText = topicText.substring(0,topicText.length()-1);
 
         if(ID.equalsIgnoreCase("operator")) {
-                text =text.replaceAll("\\s+","");
-                subscription.setText(text);
-                destination.setText(topicText+text);
+            text =text.replaceAll("\\s+","");
+            subscription.setText(text);
+            destination.setText(topicText+text);
 
-            }
+        }
         else if(ID.equalsIgnoreCase("topic")){
             try {
                 String prefix = text.replace(".*","");
@@ -315,7 +315,7 @@ public class SettingsController  implements ChangeListener, EventHandler<KeyEven
             }
 
             String suffix = text.substring(text.length()-2,text.length());
-         //   System.out.println(suffix);
+            //   System.out.println(suffix);
 
 
 
@@ -369,7 +369,7 @@ public class SettingsController  implements ChangeListener, EventHandler<KeyEven
             String ID = Constant.operatorID;//Constant.getRandomString();
             try{
                 Operator operator1 = new Operator(ID, ID);
-                 isConnected = operator1.isConnected();
+                isConnected = operator1.isConnected();
             } catch (JMSException e) {
                 e.printStackTrace();
             }
@@ -378,7 +378,7 @@ public class SettingsController  implements ChangeListener, EventHandler<KeyEven
                 try {
                     System.out.println("[INFO] Settings Changed: Trying to resolve ");
                     Operator operator = new Operator(ID, ID);
-                     isConnected = operator.isConnected();
+                    isConnected = operator.isConnected();
 
                     //         System.out.println("inside:  " + isOnline);
                     if (isConnected) {
@@ -393,7 +393,7 @@ public class SettingsController  implements ChangeListener, EventHandler<KeyEven
                         chatController.setOnline(false);
                         isConnected = false;
                     }
-                 //   operator = null;
+                    //   operator = null;
 
                 } catch (IllegalStateException e) {
                     chatController.setOnline(false);
@@ -440,7 +440,7 @@ public class SettingsController  implements ChangeListener, EventHandler<KeyEven
                     OperatorController previous = bindOperator.getOperatorController();
                     bindOperator.setOperatorController(null);
 
-                   System.out.println("Message in que:         "+ previous.getChatMessagess().size());
+                    System.out.println("Message in que:         "+ previous.getChatMessagess().size());
 
                     //  System.out.println("previius:   " + chatController.getHashMapOperator().get(chatController.getDefaultOperator()).getOperatorController());
 
@@ -484,7 +484,7 @@ public class SettingsController  implements ChangeListener, EventHandler<KeyEven
                                     System.out.println("Showing settings ");
                                     //settingsStage.show();
                                     applyConfigurationButton.setDisable(false);
-                                  //  chatController.setOnline(false);
+                                    //  chatController.setOnline(false);
                                     chatController.statusImageView.setImage(image_offline);
                                     if(isConnectedAlready) {
                                         Alert alert = new Alert(Alert.AlertType.ERROR,"Operator "+currentConfiguration.getOperator() +" is already Connected");
@@ -513,7 +513,7 @@ public class SettingsController  implements ChangeListener, EventHandler<KeyEven
                         try {
                             System.out.println("Stopping thread");
                             bindOperator.getOperatorController().getNetworkHandler().stopThread();
-                           // previous.getNetworkHandler().stopThread();
+                            // previous.getNetworkHandler().stopThread();
 
                         } catch(Exception e ){
                             System.out.println(e.getMessage());
@@ -554,10 +554,10 @@ public class SettingsController  implements ChangeListener, EventHandler<KeyEven
 
                     }
                     catch (JMSException e) {
-                    //    e.printStackTrace();
+                        //    e.printStackTrace();
                     }
                     catch (Exception e){
-                      //  e.printStackTrace();
+                        //  e.printStackTrace();
                     }
 
                     chatController.getHashMapOperator().put(currentConfiguration.getOperator(), new BindOperator(operatorController, chatController.getGridPane()) );
