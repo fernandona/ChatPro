@@ -35,7 +35,6 @@ public class JSONFormatController {
         try {
            // System.out.println("Decoding :"+  JSON);
             JSONObject jsonObject = (JSONObject) (new JSONParser().parse(JSON));
-
             String text = (String) jsonObject.get("text");
             String owner = (String) jsonObject.get("owner");
 

@@ -94,7 +94,6 @@ public class OperatorController implements MessageListener {
                 //BindOperator bindOperator = new BindOperator(this, new TextArea());
                 //this.controller.getHashMapOperator().put(defaultOperator, bindOperator);
             }*/
-
             //controller.setOperatorProducerID(messageProduceID);
             if(subscriptionName.equalsIgnoreCase(defaultOperator) &&operator.getSession()!=null) {
                 messageConsumer = operator.getSession().createDurableSubscriber(getTopic(), getSubscriptionName());//Constant.operatorID);
@@ -273,6 +272,7 @@ public class OperatorController implements MessageListener {
 
                //     response.setJMSMessageID(JMSmessageID);
                     //System.out.println("Getting producer");
+                    System.out.printf(myMessage);
                     operator.getMessageProducer().send(response);
                     //System.out.println("fine: "+ operator.getMessageProducer());
 
@@ -442,8 +442,8 @@ public class OperatorController implements MessageListener {
                         //count = count +count2;
                         //operatorController.setMessageCounter(count);
                   }
-
-             //       int count  = loadHistory(controller.getHashMapOperator().get(producerID));
+                    // to load the history
+                    int count  = loadHistory(controller.getHashMapOperator().get(producerID));
                     operatorController.setMessageCounter(0);        //starting
 
                     //operatorController.setIDtracker(0);
@@ -531,12 +531,12 @@ public class OperatorController implements MessageListener {
 
                         }
 /******** Eliminate History*********/
-/*                        int trakcer = bindOperator.getOperatorController().getIDtracker();//getTracker();
+                        int trakcer = bindOperator.getOperatorController().getIDtracker();//getTracker();
                         SeperatorLine seperatorLine = new SeperatorLine(bindOperator, trakcer);            // uncomment
                         Platform.runLater(() -> {
                             //bindOperator.getChatHolder().addRow(trakcer, seperatorLine.getSeperator()); // uncomment
                             bindOperator.getChatHolder().add(seperatorLine.getSeperator(), 0, trakcer); // uncomment
-                        });*/
+                        });
                     }
 
                 } catch (ParseException e) {
@@ -1045,11 +1045,11 @@ public class OperatorController implements MessageListener {
 
                 bindOperator.setHistoryMessages(historyMessages);
 /***History**/
-/*                SeperatorLine seperatorLine = new SeperatorLine(bindOperator,0);            // uncomment
+                SeperatorLine seperatorLine = new SeperatorLine(bindOperator,0);            // uncomment
                 //   bindOperator.getChatHolder().getChildren().clear();  // uncomment
      //           Platform.runLater(() -> {
                     bindOperator.getChatHolder().add(seperatorLine.getSeperator(),0,0); // uncomment
-      //          });*/
+      //          });
 
 
             }

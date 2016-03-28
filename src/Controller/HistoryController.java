@@ -38,6 +38,7 @@ public class HistoryController {
     public HistoryController(String fileName){
         this.directory = "C:\\vAssistant\\history\\";
 
+
         System.out.println("Directory:   "+new File(directory).mkdir());
         this.fileName = "C:\\vAssistant\\history\\"+fileName+".csv";
 

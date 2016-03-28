@@ -25,6 +25,7 @@ public class Main extends Application {
       //  AquaFx.style();
 
 
+
         try{
             //File file = new File(getClass().getResource("dummy.json").getFile());
             RandomAccessFile randomFile =
@@ -40,6 +41,7 @@ public class Main extends Application {
         }catch( Exception e ) {
             System.out.println(e.toString());
         }
+
 
 
 

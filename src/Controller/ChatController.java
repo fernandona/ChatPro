@@ -33,7 +33,7 @@ import java.util.Vector;
 
 public class ChatController{
 
-    @FXML public Button closeButton; //=========================
+    @FXML public Button closeButton;//=========================
     @FXML public Button minimizeButton; // ============================
 
     @FXML public Label statusIcon; // =========================== new
@@ -80,7 +80,7 @@ public class ChatController{
 
 
     public ChatController() throws JMSException {
-
+        System.out.println(System.getProperty("os.name"));
 
         Image image_offline = new Image(getClass().getResourceAsStream("offline.png")); // =========================== NEW
         Image image_online = new Image(getClass().getResourceAsStream("online.png"));   // =========================== NEW
@@ -258,9 +258,10 @@ public class ChatController{
                 messageDisplay.setContent(chatHolder);
 
                 if(!doTrain.isSelected()){
-                    myMessage = Constant.DO_NOT_TRAIN_TAG+myMessage;
+                    myMessage = Constant.DO_NOT_TRAIN_TAG + myMessage;
                     doTrain.setSelected(true);
                 }
+
                 myMessage = getReplacedVariables(myMessage);
                 myMessageMod = getObjectMessage(myMessage, operatorController.getSubscriptionName());
 
