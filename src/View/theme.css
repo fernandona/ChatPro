@@ -156,12 +156,13 @@ scrollbar
 
 
 
-/*.list-view .scroll-bar:vertical .track{
+.list-view .scroll-bar:vertical .track{
 	-fx-background-color:transparent;
 	-fx-border-color:transparent;
 	-fx-background-radius: 0em;
-	-fx-border-radius:1em;
-}*/
+	-fx-border-radius:0em;
+	-fx-border-color:transparent;
+}
 
 
 
@@ -223,7 +224,7 @@ scrollbar
 	-fx-padding:10px;
 }
 */
-
+/*
 .list-view{
     -fx-background-color:transparent;
     -fx-border-color:white;
@@ -235,11 +236,13 @@ scrollbar
 
 }
 
+*/
+
 .task-bar{
  -fx-background-color:#00aff0;
 }
 .list-cell{
-    -fx-background-color:derive(gray,20%);
+    -fx-background-color:transparent; /*derive(gray,20%);*/
     -fx-border-color:white;
     -fx-border-width:0 0 0 0;
 

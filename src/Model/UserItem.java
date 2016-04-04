@@ -196,7 +196,7 @@ public class UserItem extends GridPane implements   Runnable, EventHandler<Mouse
                         break;
 
                     try {
-                        this.thumbUserName.setStyle("-fx-text-fill:#ffa500; -fx-font-size:12px; -fx-font-weight:bold;");
+                        this.thumbUserName.setStyle("-fx-text-fill:#FFFFFF; -fx-font-size:12px; -fx-font-weight:bold;");
                     }
                     catch (NullPointerException e){
                         break;
@@ -216,7 +216,7 @@ public class UserItem extends GridPane implements   Runnable, EventHandler<Mouse
 
 
                     try {
-                        this.thumbUserName.setStyle("-fx-text-fill: #1e90ff; -fx-font-size:12px; -fx-font-weight:bold;");
+                        this.thumbUserName.setStyle("-fx-text-fill: #DADADA; -fx-font-size:12px; -fx-font-weight:bold;");
                     }
                     catch (NullPointerException e){
                         break;

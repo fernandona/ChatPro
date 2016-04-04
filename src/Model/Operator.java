@@ -23,8 +23,10 @@ public class Operator{
     private boolean isAnswered;
 
     static {
-        messageBrokerUrl = Constant.configuration.getURL();////ActiveMQConnection.DEFAULT_BROKER_URL;//"tcp://localhost:61616";
-        //messageBrokerUrl ="tcp://localhost:61616";
+  messageBrokerUrl = Constant.configuration.getURL();////ActiveMQConnection.DEFAULT_BROKER_URL;//"tcp://localhost:61616";
+//        messageBrokerUrl ="tcp://10.2.80.119:61616";
+
+        messageBrokerUrl ="tcp://localhost:61616";
         //messageBrokerUrl ="tcp://104.131.180.20:61616";
         ackMode = Session.AUTO_ACKNOWLEDGE;
 
@@ -120,6 +122,7 @@ public class Operator{
 
     public void closeConnection()  {
         try{
+            session.close();
             connection.close();
         }
         catch (JMSException e){
