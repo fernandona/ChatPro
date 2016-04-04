@@ -224,6 +224,7 @@ public class OperatorController implements MessageListener {
         }
 
     }
+    //send a message to the user from operator
     public void sendMessage(ChatMessage chatMessage,OperatorController operator) throws JMSException {
 
         // check if a message was received
@@ -261,7 +262,7 @@ public class OperatorController implements MessageListener {
                 TextMessage response =   operator.getSesssion().createTextMessage(); //controller.getHashMapOperator().get(controller.getDefaultOperator()).getOperatorController().getSesssion().createTextMessage();
                 String myMessage = chatMessage.getTextMessage();
                 //System.out.println("message: "+ myMessage);
-                myMessage = myMessage.trim().equalsIgnoreCase("exit") ? "DIRROUTETOBOT":myMessage;
+          //      myMessage = myMessage.trim().equalsIgnoreCase("exit") ? "DIRROUTETOBOT":myMessage;
                 myMessage = jsonFormatController.createJSONmessage(OperatorController.defaultOperator,myMessage);
                 response.setText(myMessage);
                 //System.out.println("offline:   "+myMessage);
@@ -334,6 +335,7 @@ public class OperatorController implements MessageListener {
                 //                System.out.println("destination: "+ destination);
                 producerID = destination;
                 correlationID = message.getJMSCorrelationID();
+
                 if(!messageText.contains("DIRCONNECT")){
                     chatMessage =  new ChatMessage();
                     chatMessage.setProducerID(producerID);
@@ -370,6 +372,7 @@ public class OperatorController implements MessageListener {
 
                 ByteSequence byteSequence = activeMQBytesMessage.getContent();
                 byte[] bytes = byteSequence.getData();
+
                 String messageText = new String(bytes, StandardCharsets.UTF_8);
                 String [] jsoNmessage = jsonFormatController.readJSONmessage(messageText);
 
@@ -438,7 +441,7 @@ public class OperatorController implements MessageListener {
 
 
 
-
+// history
                 if(!chatMessagess.contains(chatMessage)) {
                     String  username = bindOperator.getHistoryController().writeHistory(chatMessage.getTextMessage(), bindOperator, false);
 
@@ -452,7 +455,7 @@ public class OperatorController implements MessageListener {
                 }
 
                 //       int count  = loadHistory(controller.getHashMapOperator().get(producerID));
-                operatorController.setMessageCounter(0);        //starting
+  //              operatorController.setMessageCounter(0);        //starting
 
                 //operatorController.setIDtracker(0);
 
@@ -729,6 +732,7 @@ public class OperatorController implements MessageListener {
 /****************/
                         //String JMSreplyTo = chatMessage.getMessage().getJMSMessageID();
                         if(correID!=null) {
+                            //correalation id is null means it's the operator and not null is the user
                             //  System.out.println("MessageID working"+ JMSreplyTo);
                             if (!correID.equalsIgnoreCase(Constant.correalationID)) {
                                 if(!chatMessage.getTextMessage().equals(Constant.exitMessage) ){
@@ -1431,7 +1435,7 @@ public class OperatorController implements MessageListener {
     }
 
 
-
+//storing messages
     class MessageDistributionHandler extends Thread{
         boolean  isRunning= true;
         Thread thread = this;

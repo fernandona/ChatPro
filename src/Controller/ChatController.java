@@ -311,7 +311,7 @@ public class ChatController{
         messageTextField.setText("");
     }
 
-
+// offline messages to online
     public void sendMessage(ChatMessage chatMessage, OperatorController operatorController) throws IOException {
         String myMessage = chatMessage.getTextMessage();
         ChatMessage myMessageMod = getObjectMessage(myMessage, operatorController.getSubscriptionName());
@@ -1200,6 +1200,7 @@ public class ChatController{
                         operatorController.startDefaultOperatorAction();
                     }
                     else{
+
                         System.out.println("Operator "+config.getOperator() +" is already Connected");
                         Platform.runLater(() -> {
                             try {
